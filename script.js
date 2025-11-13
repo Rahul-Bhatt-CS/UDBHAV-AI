@@ -71,10 +71,7 @@ authBtn.addEventListener("click", async () => {
       authTitle.textContent = "Login";
       authBtn.textContent = "Login";
     }
-  } catch (err) {
-    console.error(err);
-    alert("Server error");
-  }
+  } 
 });
 
 function showChatUI() {
