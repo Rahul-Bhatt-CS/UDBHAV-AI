@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="authContainer" class="auth-container">
+    <h2 id="authTitle">Login</h2>
+    <input id="username" type="text" placeholder="Username" />
+    <input id="password" type="password" placeholder="Password" />
+    <button id="authBtn">Login</button>
+    <p id="toggleAuth">Don't have an account? <a href="#">Register</a></p>
+  </div>
+
+  <div id="chatContainer" class="container hidden">
+    <aside class="sidebar">
+      <h2>Chat</h2>
+      <button id="newChatBtn">+ New Chat</button>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+
+    <main class="chat-area">
+      <div id="chatBox" class="chat-box"></div>
+      <div id="typingIndicator" class="hidden">UDBHAV AI is typing...</div>
+      <div class="input-area">
+        <input id="messageInput" type="text" placeholder="Type your message..." />
+        <button id="voiceInputBtn">🎤</button>
+        <button id="voiceToggleBtn">🔊 Voice: On</button>
+        <button id="sendBtn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
