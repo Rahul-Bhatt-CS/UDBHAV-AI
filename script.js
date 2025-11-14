@@ -73,7 +73,6 @@ authBtn.addEventListener("click", async () => {
     }
   }catch (err) {
   console.error(err);
-  alert("Server error");
 } 
 });
 
