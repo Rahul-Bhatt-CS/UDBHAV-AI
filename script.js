@@ -95,18 +95,39 @@ let inactivityTimer;
 
 
 // Function to send POST request to backend
-function notifyInactivity() {
-  jwtToken = localStorage.getItem("jwt") || null;
-    fetch('https://localhost:8080/inactivity', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwtToken}`
-        },
-        body: JSON.stringify({ message: "user inactive for too long" })
-    })
-    .then(response => console.log('Inactivity reported:', response.status))
-    .catch(err => console.error('Error sending inactivity:', err));
+async function notifyInactivity() {
+    const jwtToken = localStorage.getItem("jwt") || null;
+
+    try {
+        // 1️⃣ Make the POST request
+        const response = await fetch('http://localhost:8080/inactivity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwtToken}`
+            },
+            body: JSON.stringify({ message: "user inactive for too long" })
+        });
+
+        console.log('Inactivity reported:', response.status);
+
+        // 2️⃣ Parse the JSON from response
+        const data = await response.json();
+
+        console.log('Data from backend:', data);
+
+        // 3️⃣ Access English and Hindi messages
+        const { english, hindi } = data;
+
+        // 4️⃣ Display and speak the messages
+        appendMessage(hindi, "bot");
+        speakText(hindi);
+        appendMessage(english, "bot");
+        speakText(english);
+
+    } catch (err) {
+        console.error('Error sending inactivity:', err);
+    }
 }
 
 // Reset inactivity timer
