@@ -133,7 +133,7 @@ async function notifyInactivity() {
 // Reset inactivity timer
 function resetTimer() {
     clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(notifyInactivity, 5 * 60 * 1000); // 5 minutes
+    inactivityTimer = setTimeout(notifyInactivity, 2 * 60 * 1000); // 5 minutes
 }
 
 // List of events to detect user activity
